@@ -34,5 +34,6 @@ jobs:
             cd /root
             docker load < tigaplus.tar.gz || true
             docker stop tigaplus || true
-            docker rm tigaplus || true
+            docker rm -f tigaplus || true
+            sleep 2
             docker run -d -p 80:80 -p 443:443 --name tigaplus tigaplus:latest
