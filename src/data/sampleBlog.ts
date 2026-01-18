@@ -1,12 +1,18 @@
-{
-    par1: 'landing-simple',
+export const sampleBlog = {
+  sections: [
     {
+      type: 'landing-simple',
+      content: {
         text: '300 char',
         image: '',
-    }
-    par1: 'landing-simple',
+      },
+    },
     {
+      type: 'landing-simple',
+      content: {
         text: '300 char',
         image: '',
-    }
-  },
+      },
+    },
+  ],
+};
