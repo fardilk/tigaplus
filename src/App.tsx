@@ -6,6 +6,7 @@ import PackagesPage from '@/pages/PackagesPage'
 import PreviewPage from '@/pages/PreviewPage'
 import PreviewDetailPage from '@/pages/PreviewDetailPage'
 import ContactPage from '@/pages/ContactPage'
+import OurTeamPage from '@/pages/OurTeamPage'
 import './App.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/preview" element={<PreviewPage />} />
           <Route path="/preview/:id" element={<PreviewDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/our-team" element={<OurTeamPage />} />
         </Routes>
       </Layout>
     </OrderProvider>
