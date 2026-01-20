@@ -12,26 +12,26 @@ const teamMembers = [
   {
     id: 1,
     name: "Attar Asmawan",
-    role: "Lead Developer",
+    role: "Project Lead & Business Development",
     description:
-      "Berpengalaman dalam membangun website modern dengan teknologi terkini. Fokus pada performa dan user experience yang optimal.",
-    avatar: "AA",
+      "Project Lead and Business Development specialist. Currently CEO of Sevenrose, ready to help with growth and business expansion.",
+    image: "https://cdn-fardil-2025.s3.us-east-2.amazonaws.com/tigaplus/attar.jpg",
   },
   {
     id: 2,
     name: "Andika Pradana Putra",
-    role: "Designer & UI/UX",
+    role: "Creative Director & UI/UX Expert",
     description:
-      "Spesialis dalam menciptakan desain visual yang menarik dan fungsional. Memastikan setiap detail dirancang dengan sempurna.",
-    avatar: "AP",
+      "Creative Director and UI/UX expert with extensive experience. Former Creative Director at MocaasTV, bringing design excellence to every project.",
+    image: "https://cdn-fardil-2025.s3.us-east-2.amazonaws.com/tigaplus/andika.jpg",
   },
   {
     id: 3,
     name: "Fardil Khalidi",
-    role: "Project Manager",
+    role: "Web Development Expert",
     description:
-      "Mengelola proyek dengan efisien untuk memastikan delivery tepat waktu. Komunikasi yang jelas dengan klien adalah prioritas.",
-    avatar: "FK",
+      "Expert in website development with deep expertise in the healthcare industry. Currently involved in Hospital industry development at Primya Hospital.",
+    image: "https://cdn-fardil-2025.s3.us-east-2.amazonaws.com/tigaplus/fardil.jpg",
   },
 ];
 
@@ -136,8 +136,12 @@ export default function OurTeamPage() {
                 >
                   {/* Avatar Section */}
                   <div className="bg-gradient-to-br from-primary/20 to-primary/5 p-8 flex items-center justify-center">
-                    <div className="w-24 h-24 bg-primary rounded-lg flex items-center justify-center text-primary-foreground text-2xl font-bold">
-                      {member.avatar}
+                    <div className="w-32 h-32 rounded-lg overflow-hidden flex items-center justify-center">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
 
