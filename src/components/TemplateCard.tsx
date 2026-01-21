@@ -27,13 +27,21 @@ export function TemplateCard({ template, showDetails = true }: TemplateCardProps
           <ImageIcon className="w-12 h-12 text-muted-foreground/40" />
         </div>
         {/* Hover overlay */}
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <Link to={`/preview/${template.id}`}>
-            <Button variant="secondary" size="sm">
+        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 px-4">
+          <Link to={`/preview/${template.id}`} className="flex-1">
+            <Button variant="secondary" size="sm" className="w-full">
               <Eye className="w-4 h-4 mr-2" />
               Lihat Detail
             </Button>
           </Link>
+          {template.includedTier === "starter" && (
+            <Link to={`/preview/${template.id}?tier=starter&mode=preview`} className="flex-1">
+              <Button variant="secondary" size="sm" className="w-full">
+                <Eye className="w-4 h-4 mr-2" />
+                Preview
+              </Button>
+            </Link>
+          )}
         </div>
       </div>
 

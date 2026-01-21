@@ -179,6 +179,18 @@ export default function PreviewDetailPage() {
                       </div>
                     </div>
 
+                    {/* Profile link */}
+                    <div className="border-t pt-4">
+                      <p className="text-xs text-muted-foreground mb-2">Template Creator</p>
+                      <Link
+                        to="#"
+                        className="inline-flex items-center text-sm font-medium text-primary hover:underline"
+                      >
+                        Lihat Profile Pembuat
+                        <ArrowLeft className="w-4 h-4 ml-1 rotate-180" />
+                      </Link>
+                    </div>
+
                     {/* Short description */}
                     <p className="text-muted-foreground text-sm">
                       {template.shortDescription}
