@@ -1,0 +1,240 @@
+/* Drawer Menu Styles with Device-Specific Breakpoints */
+
+/* CSS Variables for Theme */
+:root {
+  --drawer-bg: #ffffff;
+  --drawer-text: #1a1a1a;
+  --drawer-border: #e5e5e5;
+  --drawer-overlay: rgba(0, 0, 0, 0.5);
+  --drawer-accent: #10b981;
+  --drawer-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --drawer-safe-bottom: max(16px, env(safe-area-inset-bottom));
+}
+
+/* Overlay - covers entire viewport */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background-color: var(--drawer-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Mobile safe area handling */
+  top: 0;
+  left: 0;
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Drawer Container - fixed position, slides from right */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh; /* Dynamic viewport height (not affected by mobile browser UI) */
+  z-index: 100;
+  background-color: var(--drawer-bg);
+  color: var(--drawer-text);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+  touch-action: pan-y; /* Allow vertical scroll only */
+
+  /* GPU acceleration for smooth animations */
+  transform: translateX(100%);
+  transition: var(--drawer-transition);
+
+  /* Content containment for performance */
+  contain: layout style paint;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+/* Device-specific drawer widths */
+
+/* Small phones: 320px - 374px */
+@media (max-width: 374px) {
+  .drawer {
+    width: 85vw;
+    max-width: 280px;
+  }
+}
+
+/* Standard phones: 375px - 414px */
+@media (min-width: 375px) and (max-width: 414px) {
+  .drawer {
+    width: 75vw;
+    max-width: 300px;
+  }
+}
+
+/* Large phones: 415px - 767px */
+@media (min-width: 415px) and (max-width: 767px) {
+  .drawer {
+    width: 70vw;
+    max-width: 320px;
+  }
+}
+
+/* Small tablets: 768px - 899px */
+@media (min-width: 768px) and (max-width: 899px) {
+  .drawer {
+    width: 65vw;
+    max-width: 380px;
+  }
+}
+
+/* Large tablets and desktop: 900px+ */
+@media (min-width: 900px) {
+  .drawer {
+    display: none;
+  }
+}
+
+/* Drawer Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--drawer-border);
+  gap: 12px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--drawer-text);
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-height: 44px; /* WCAG touch target size */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  color: var(--drawer-text);
+  transition: background-color 200ms ease;
+  padding: 0;
+}
+
+.closeButton:hover {
+  background-color: #f5f5f5;
+}
+
+.closeButton:focus {
+  outline: 2px solid var(--drawer-accent);
+  outline-offset: 2px;
+}
+
+/* Drawer Content */
+.content {
+  flex: 1;
+  padding: 20px 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Navigation Links */
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  min-height: 44px; /* WCAG touch target size */
+  text-decoration: none;
+  color: var(--drawer-text);
+  font-size: 16px; /* Prevent iOS zoom on input focus */
+  font-weight: 500;
+  transition: background-color 200ms ease;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+
+.navLink:hover {
+  background-color: #f9f9f9;
+}
+
+.navLink.active {
+  background-color: #f0f9ff;
+  border-left-color: var(--drawer-accent);
+  color: var(--drawer-accent);
+}
+
+.navLink:focus {
+  outline: 2px solid var(--drawer-accent);
+  outline-offset: -2px;
+}
+
+/* Drawer Footer */
+.footer {
+  padding: 20px;
+  border-top: 1px solid var(--drawer-border);
+  padding-bottom: var(--drawer-safe-bottom);
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ctaButton {
+  width: 100%;
+  padding: 12px 16px;
+  min-height: 44px; /* WCAG touch target size */
+  background-color: var(--drawer-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px; /* Prevent iOS zoom on input focus */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.ctaButton:hover {
+  background-color: #059669;
+}
+
+.ctaButton:focus {
+  outline: 2px solid #047857;
+  outline-offset: 2px;
+}
+
+/* Landscape orientation adjustment */
+@media (orientation: landscape) and (max-height: 500px) {
+  .drawer {
+    height: 100dvh;
+  }
+
+  .header {
+    padding: 12px 16px;
+  }
+
+  .content {
+    padding: 12px 0;
+  }
+
+  .navLink {
+    padding: 10px 16px;
+  }
+}
+
+/* Swipe gesture feedback - optional visual feedback during drag */
+.dragging {
+  /* transition: none; */ /* Uncomment to disable transition during swipe for immediate visual feedback */
+}
