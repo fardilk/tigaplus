@@ -10,11 +10,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">T</span>
-              </div>
-              <span className="font-bold text-xl">TigaPlus</span>
+            <Link to="/" className="flex items-center">
+              <img
+                src="https://cdn-fardil-2025.s3.us-east-2.amazonaws.com/tigaplus/main-logo.svg"
+                alt="TigaPlus Logo"
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-sm text-muted-foreground">
               Jasa pembuatan website profesional, cepat, dan terjangkau untuk bisnis Anda.

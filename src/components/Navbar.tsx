@@ -43,11 +43,12 @@ export function Navbar() {
       <div className="container mx-auto px-[5%]">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">T</span>
-            </div>
-            <span className="font-bold text-xl">TigaPlus</span>
+          <Link to="/" className="flex items-center">
+            <img
+              src="https://cdn-fardil-2025.s3.us-east-2.amazonaws.com/tigaplus/main-logo.svg"
+              alt="TigaPlus Logo"
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
