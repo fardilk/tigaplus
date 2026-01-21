@@ -1,0 +1,160 @@
+/* Preview Floating Menu Styles */
+/* Fixed positioning with backdrop blur effect */
+
+.floatingMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  /* Semi-transparent backdrop with blur effect */
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  /* Border using preview theme primary color */
+  border-bottom: 2px solid var(--preview-primary);
+
+  /* Performance optimization */
+  contain: layout style;
+
+  /* Reset any inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(8px)) {
+  .floatingMenu {
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 100%;
+  padding: var(--preview-spacing-md) var(--preview-spacing-lg);
+  height: 56px;
+  box-sizing: border-box;
+
+  /* Use body font family */
+  font-family: var(--preview-body-family);
+}
+
+/* Preview Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--preview-spacing-xs);
+  padding: var(--preview-spacing-xs) var(--preview-spacing-md);
+  background-color: var(--preview-primary);
+  color: white;
+  border-radius: var(--preview-radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.badgeIcon {
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badgeText {
+  font-family: var(--preview-body-family);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Variant: Default */
+.variant-default {
+  /* Default styling already applied */
+}
+
+/* Variant: Minimal - less prominent, semi-transparent */
+.variant-minimal {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile: Compact layout */
+@media (max-width: 640px) {
+  .container {
+    height: 52px;
+    padding: var(--preview-spacing-sm) var(--preview-spacing-md);
+    gap: var(--preview-spacing-sm);
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .badgeIcon {
+    font-size: 14px;
+  }
+
+  .badgeText {
+    font-size: 12px;
+  }
+}
+
+/* Tablet: Medium spacing */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    height: 56px;
+    padding: var(--preview-spacing-md) var(--preview-spacing-lg);
+  }
+}
+
+/* Desktop: Full spacing */
+@media (min-width: 1025px) {
+  .container {
+    height: 64px;
+    padding: var(--preview-spacing-lg) var(--preview-spacing-xxl);
+  }
+
+  .badge {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  .floatingMenu {
+    border-bottom-width: 3px;
+  }
+
+  .badge {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .floatingMenu {
+    backdrop-filter: none;
+  }
+}
+
+/* Dark mode support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+  .floatingMenu {
+    background-color: rgba(31, 41, 55, 0.85);
+    color: white;
+  }
+
+  .badge {
+    background-color: var(--preview-accent);
+  }
+}

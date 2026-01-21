@@ -1,0 +1,35 @@
+/* Preview Card Styles */
+
+.card {
+  background-color: var(--preview-background);
+  border: 1px solid var(--preview-border);
+  border-radius: var(--preview-radius-lg);
+  transition: all var(--preview-transition-normal);
+
+  /* Reset browser defaults */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.elevated {
+  box-shadow: var(--preview-shadow-md);
+}
+
+.hoverable:hover {
+  box-shadow: var(--preview-shadow-lg);
+  border-color: var(--preview-text-light);
+}
+
+/* Padding variants */
+
+.padding-sm {
+  padding: var(--preview-spacing-md);
+}
+
+.padding-md {
+  padding: var(--preview-spacing-lg);
+}
+
+.padding-lg {
+  padding: var(--preview-spacing-xl);
+}

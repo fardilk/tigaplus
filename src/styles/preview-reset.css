@@ -1,0 +1,124 @@
+/*
+  Preview CSS Reset
+  Isolate preview from parent Tailwind and TigaPlus styles
+  Reference: /research/isolated-preview-architecture/findings.md#finding-2
+*/
+
+/* Reset at container boundary */
+.preview-container {
+  /* CSS containment for performance boost (~10-20%) */
+  contain: layout style paint;
+
+  /* Complete CSS reset */
+  all: initial;
+
+  /* Restore essential display properties */
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* Restore text properties */
+  color: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: inherit;
+
+  /* Box sizing */
+  box-sizing: border-box;
+
+  /* Default background */
+  background: white;
+}
+
+/* Reset all descendants */
+.preview-container * {
+  all: revert;
+  box-sizing: border-box;
+}
+
+/* Preserve inherited text properties for readability */
+.preview-container body,
+.preview-container body * {
+  font-family: inherit;
+  line-height: 1.5;
+  color: inherit;
+}
+
+/* Remove default margins/padding */
+.preview-container body,
+.preview-container h1,
+.preview-container h2,
+.preview-container h3,
+.preview-container h4,
+.preview-container h5,
+.preview-container h6,
+.preview-container p,
+.preview-container ul,
+.preview-container ol,
+.preview-container li,
+.preview-container dl,
+.preview-container dt,
+.preview-container dd,
+.preview-container blockquote,
+.preview-container figure {
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset form elements */
+.preview-container button,
+.preview-container input,
+.preview-container textarea,
+.preview-container select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Reset links */
+.preview-container a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reset lists */
+.preview-container ul,
+.preview-container ol {
+  list-style: none;
+}
+
+/* Reset images */
+.preview-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure no Tailwind utilities apply */
+.preview-container {
+  /* Override potential Tailwind utilities */
+  !important: all: initial;
+}
+
+/* Accessibility: Preserve focus indicators */
+.preview-container *:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Prevent parent styles from leaking in */
+.preview-container {
+  /* Isolate from parent context */
+  position: relative;
+  z-index: 0;
+
+  /* Prevent external positioning from affecting preview */
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

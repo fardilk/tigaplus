@@ -1,0 +1,509 @@
+/* StarterPreviewRenderer Styles */
+/* Complete style isolation using CSS Modules and preview theme variables */
+
+/* Reset and container setup */
+.previewContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--preview-background);
+  color: var(--preview-text);
+  font-family: var(--preview-body-family);
+  font-size: 16px;
+  line-height: 1.5;
+
+  /* CSS containment for performance */
+  contain: layout style paint;
+
+  /* Reset any parent styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.mainContent {
+  width: 100%;
+  /* Padding top to prevent floating menu overlap (56px for mobile, 64px for desktop) */
+  padding-top: 56px;
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--preview-spacing-xxl) var(--preview-spacing-lg);
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 107, 0.1) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 107, 107, 0.05) 100%
+  );
+}
+
+.heroBlob1 {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 107, 107, 0.15);
+  border-radius: 50%;
+  filter: blur(60px);
+  mix-blend-mode: multiply;
+}
+
+.heroBlob2 {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  width: 300px;
+  height: 300px;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 50%;
+  filter: blur(60px);
+  mix-blend-mode: multiply;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--preview-spacing-xs);
+  padding: var(--preview-spacing-xs) var(--preview-spacing-md);
+  background-color: var(--preview-primary);
+  color: white;
+  border-radius: var(--preview-radius-full);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: var(--preview-spacing-lg);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.badgeIcon {
+  font-size: 16px;
+}
+
+.heroTitle {
+  font-size: clamp(32px, 8vw, 64px);
+  font-weight: 700;
+  font-family: var(--preview-heading-family);
+  line-height: 1.2;
+  margin-bottom: var(--preview-spacing-lg);
+  color: var(--preview-text);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.heroSubtitle {
+  font-size: clamp(16px, 4vw, 24px);
+  color: var(--preview-text-light);
+  margin-bottom: var(--preview-spacing-xl);
+  line-height: 1.6;
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--preview-spacing-md);
+  justify-content: center;
+}
+
+.ctaButton {
+  min-width: 200px;
+}
+
+.secondaryButton {
+  min-width: 200px;
+}
+
+/* About Section */
+.aboutSection {
+  padding: var(--preview-spacing-xxl) var(--preview-spacing-lg);
+  background-color: var(--preview-secondary);
+}
+
+.sectionContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.aboutContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: clamp(28px, 6vw, 48px);
+  font-weight: 700;
+  font-family: var(--preview-heading-family);
+  margin-bottom: var(--preview-spacing-lg);
+  color: var(--preview-text);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.aboutCard {
+  background-color: var(--preview-background);
+  border-radius: var(--preview-radius-lg);
+}
+
+.aboutText {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--preview-text-light);
+  margin-bottom: var(--preview-spacing-md);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.aboutText:last-child {
+  margin-bottom: 0;
+}
+
+/* Services Section */
+.servicesSection {
+  padding: var(--preview-spacing-xxl) var(--preview-spacing-lg);
+  background-color: var(--preview-background);
+}
+
+.sectionSubtitle {
+  font-size: 18px;
+  color: var(--preview-text-light);
+  text-align: center;
+  margin-bottom: var(--preview-spacing-xl);
+  line-height: 1.6;
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--preview-spacing-lg);
+  margin-top: var(--preview-spacing-xl);
+}
+
+.serviceCard {
+  background-color: var(--preview-background);
+  border-radius: var(--preview-radius-lg);
+  border: 1px solid var(--preview-border);
+  transition: all var(--preview-transition-normal);
+}
+
+.serviceIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--preview-primary);
+  color: white;
+  border-radius: var(--preview-radius-md);
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: var(--preview-spacing-md);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.serviceTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: var(--preview-spacing-sm);
+  color: var(--preview-text);
+  font-family: var(--preview-heading-family);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.serviceDescription {
+  font-size: 14px;
+  color: var(--preview-text-light);
+  line-height: 1.6;
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+/* Pricing Section */
+.pricingSection {
+  padding: var(--preview-spacing-xxl) var(--preview-spacing-lg);
+  background-color: var(--preview-secondary);
+}
+
+.pricingCard {
+  max-width: 600px;
+  margin: var(--preview-spacing-xl) auto 0;
+  background-color: var(--preview-background);
+  border-radius: var(--preview-radius-lg);
+  text-align: center;
+}
+
+.pricingLabel {
+  font-size: 16px;
+  color: var(--preview-text-light);
+  margin-bottom: var(--preview-spacing-sm);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.pricingAmount {
+  font-size: clamp(36px, 8vw, 56px);
+  font-weight: 700;
+  font-family: var(--preview-heading-family);
+  color: var(--preview-primary);
+  margin-bottom: var(--preview-spacing-md);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.pricingDescription {
+  font-size: 16px;
+  color: var(--preview-text-light);
+  margin-bottom: var(--preview-spacing-lg);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.pricingFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: var(--preview-spacing-md);
+  margin-bottom: var(--preview-spacing-xl);
+  text-align: left;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--preview-spacing-md);
+  font-size: 16px;
+  color: var(--preview-text);
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.featureCheck {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background-color: var(--preview-success);
+  color: white;
+  border-radius: var(--preview-radius-full);
+  font-weight: bold;
+  font-size: 14px;
+
+  /* Reset inherited styles */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.pricingCta {
+  margin-top: var(--preview-spacing-md);
+}
+
+/* Contact Section */
+.contactSection {
+  padding: var(--preview-spacing-xxl) var(--preview-spacing-lg);
+  background-color: var(--preview-background);
+}
+
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--preview-spacing-md);
+  justify-content: center;
+  margin-top: var(--preview-spacing-xl);
+}
+
+/* Responsive Design */
+
+/* Mobile: max-width 640px */
+@media (max-width: 640px) {
+  .mainContent {
+    padding-top: 52px;
+  }
+
+  .heroSection {
+    min-height: 60vh;
+    padding: var(--preview-spacing-lg) var(--preview-spacing-md);
+  }
+
+  .heroBlob1,
+  .heroBlob2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .aboutSection,
+  .servicesSection,
+  .pricingSection,
+  .contactSection {
+    padding: var(--preview-spacing-xl) var(--preview-spacing-md);
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroActions,
+  .contactActions {
+    flex-direction: column;
+  }
+
+  .ctaButton,
+  .secondaryButton {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* Tablet: 641px - 1024px */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 1025px and above */
+@media (min-width: 1025px) {
+  .mainContent {
+    padding-top: 64px;
+  }
+
+  .heroSection {
+    min-height: 90vh;
+    padding: var(--preview-spacing-xxl) var(--preview-spacing-xxl);
+  }
+
+  .aboutSection,
+  .servicesSection,
+  .pricingSection,
+  .contactSection {
+    padding: var(--preview-spacing-xxl) var(--preview-spacing-xxl);
+  }
+
+  .servicesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Accessibility */
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .badge {
+    border: 2px solid currentColor;
+  }
+
+  .heroSection {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
+  }
+
+  .serviceCard {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .serviceCard {
+    transition: none;
+  }
+
+  .heroBlob1,
+  .heroBlob2 {
+    animation: none;
+  }
+}
+
+/* Dark mode support (future) */
+@media (prefers-color-scheme: dark) {
+  .previewContainer {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  .heroBackground {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 107, 107, 0.05) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 107, 107, 0.02) 100%
+    );
+  }
+
+  .aboutSection,
+  .pricingSection {
+    background-color: #262626;
+  }
+
+  .aboutCard,
+  .pricingCard {
+    background-color: #1a1a1a;
+  }
+
+  .serviceCard {
+    background-color: #262626;
+    border-color: #404040;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.heroActions button:focus,
+.contactActions button:focus,
+.pricingCta:focus {
+  outline: 2px solid var(--preview-accent);
+  outline-offset: 2px;
+}

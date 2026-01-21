@@ -1,0 +1,47 @@
+/* Preview Image Styles */
+/* Handles lazy loading with placeholders */
+
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--preview-secondary);
+  border-radius: var(--preview-radius-md);
+
+  /* Reset browser defaults */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(5px);
+  z-index: 1;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--preview-transition-normal);
+  z-index: 2;
+
+  /* Reset browser defaults */
+  all: revert;
+  box-sizing: border-box;
+}
+
+.image.loaded {
+  opacity: 1;
+}
+
+/* Preserve aspect ratio for images without explicit dimensions */
+.imageContainer {
+  width: 100%;
+}
