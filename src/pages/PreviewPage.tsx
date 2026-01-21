@@ -1,11 +1,13 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 import { TemplateCard } from "@/components/TemplateCard";
 import { Badge } from "@/components/ui/badge";
 import { templates, categories, tierFilters, TemplateCategory } from "@/data/templates";
 import { PackageTier } from "@/data/packages";
-import { Search, LayoutGrid } from "lucide-react";
+import { Search, LayoutGrid, Zap, ArrowRight } from "lucide-react";
 
 type TierFilter = PackageTier | "all";
 type CategoryFilter = TemplateCategory | "all";
@@ -117,6 +119,34 @@ export default function PreviewPage() {
               </button>
             </div>
           )}
+        </div>
+      </section>
+
+      {/* Starter Preview Banner */}
+      <section className="py-12 md:py-16 border-b bg-gradient-to-r from-primary/5 to-primary/10">
+        <div className="container mx-auto px-[5%]">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 md:p-8 rounded-lg border bg-card/50 backdrop-blur-sm">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-3">
+                <Badge variant="default" className="gap-1">
+                  <Zap className="w-3 h-3" />
+                  Paket Terpopuler
+                </Badge>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                Starter Package Preview
+              </h3>
+              <p className="text-muted-foreground mb-4 md:mb-0">
+                Lihat langsung seperti apa tampilan website Starter Anda. Hemat, profesional, dan cepat jadi dalam 3-5 hari.
+              </p>
+            </div>
+            <Link to="/preview/personal-01?tier=starter&mode=preview" className="shrink-0">
+              <Button size="lg" className="gap-2">
+                Lihat Preview Starter
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 
