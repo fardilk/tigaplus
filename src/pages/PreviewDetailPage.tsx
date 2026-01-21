@@ -1,17 +1,18 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { useOrder } from "@/context/OrderContext";
 import { getTemplateById } from "@/data/templates";
 import { packages, getTierLevel, PackageTier } from "@/data/packages";
-import { 
-  ArrowLeft, 
-  Check, 
-  ImageIcon, 
-  MessageCircle, 
+import { StarterPreviewRenderer } from "@/components/StarterPreviewRenderer";
+import {
+  ArrowLeft,
+  Check,
+  ImageIcon,
+  MessageCircle,
   AlertTriangle,
-  ExternalLink 
+  ExternalLink
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,9 +25,12 @@ const tierLabels: Record<PackageTier, string> = {
 
 export default function PreviewDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
   const { openOrderModal, selectedPackage } = useOrder();
 
   const template = id ? getTemplateById(id) : undefined;
+  const previewMode = searchParams.get("mode") === "preview";
+  const tierParam = searchParams.get("tier");
 
   if (!template) {
     return (
@@ -41,6 +45,26 @@ export default function PreviewDetailPage() {
             Kembali ke Preview
           </Button>
         </Link>
+      </div>
+    );
+  }
+
+  // Show preview mode for starter tier
+  if (previewMode && (tierParam === "starter" || template.includedTier === "starter")) {
+    return (
+      <div className="flex flex-col">
+        <StarterPreviewRenderer templateId={id || ""} templateName={template.name} />
+        <div className="bg-muted/50 py-4 border-t">
+          <div className="container mx-auto px-[5%]">
+            <Link
+              to="/preview"
+              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4 mr-1" />
+              Kembali ke Semua Template
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
