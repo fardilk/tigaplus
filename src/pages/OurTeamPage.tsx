@@ -7,39 +7,14 @@ import { MessageCircle, ArrowRight, Users } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-// Responsive profile image component with modern format support
-interface TeamMemberImageProps {
-  name: string;
-  image: string;
-}
-
-function TeamMemberImage({ name, image }: TeamMemberImageProps) {
-  const imageBase = image.replace(/\.[^/.]+$/, ""); // Remove extension
-
+// Responsive profile image component
+function TeamMemberImage({ name, image }: { name: string; image: string }) {
   return (
-    <picture className="block w-full h-full">
-      {/* AVIF format (best compression) */}
-      <source
-        srcSet={`${imageBase}.avif?w=300 1x, ${imageBase}.avif?w=600 2x`}
-        type="image/avif"
-        sizes="(max-width: 768px) 120px, 200px"
-      />
-      {/* WebP format (better compression than JPEG) */}
-      <source
-        srcSet={`${imageBase}.webp?w=300 1x, ${imageBase}.webp?w=600 2x`}
-        type="image/webp"
-        sizes="(max-width: 768px) 120px, 200px"
-      />
-      {/* JPEG fallback */}
-      <img
-        src={`${imageBase}.jpg?w=300`}
-        srcSet={`${imageBase}.jpg?w=300 1x, ${imageBase}.jpg?w=600 2x`}
-        alt={`${name} - Team Member`}
-        loading="lazy"
-        decoding="async"
-        className="w-full h-full object-cover rounded-lg"
-      />
-    </picture>
+    <img
+      src={image}
+      alt={`${name} - Team Member`}
+      className="w-full h-full object-cover rounded-lg"
+    />
   );
 }
 
@@ -171,10 +146,8 @@ export default function OurTeamPage() {
                   )}
                 >
                   {/* Avatar Section */}
-                  <div className="bg-gradient-to-br from-primary/20 to-primary/5 p-8 flex items-center justify-center">
-                    <div className="w-40 h-40 md:w-48 md:h-48 overflow-hidden flex items-center justify-center">
-                      <TeamMemberImage name={member.name} image={member.image} />
-                    </div>
+                  <div className="bg-gradient-to-br from-primary/20 to-primary/5 w-full aspect-square overflow-hidden">
+                    <TeamMemberImage name={member.name} image={member.image} />
                   </div>
 
                   {/* Content Section */}
