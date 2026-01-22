@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useOrder } from "@/context/OrderContext";
 import {
   PreviewProvider,
-  PreviewFloatingMenu,
+  PreviewHeaderMinimal,
   PreviewCard,
   PreviewButton,
   getPreviewTheme,
@@ -20,8 +21,8 @@ export function StarterPreviewRenderer({
   templateName,
   templateId,
 }: StarterPreviewRendererProps) {
+  const navigate = useNavigate();
   const { openOrderModal } = useOrder();
-  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const theme = getPreviewTheme(templateId);
 
   useEffect(() => {
@@ -36,35 +37,39 @@ export function StarterPreviewRenderer({
   }, [templateId, templateName]);
 
   const handleOrder = () => {
-    setIsOrderModalOpen(true);
     openOrderModal("starter", templateId);
 
-    // Track floating CTA click event
+    // Track header CTA click event
     if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", "floating_cta_clicked", {
+      (window as any).gtag("event", "header_cta_clicked", {
         tier: "starter",
         template_id: templateId,
       });
     }
   };
 
+  const handleClose = () => {
+    // Navigate back to previous page or packages page
+    navigate(-1);
+  };
+
   return (
     <div
-      className={styles.previewContainer}
+      className={styles.previewOverlay}
       style={generateCSSVariables(theme) as React.CSSProperties}
     >
       <PreviewProvider templateId={templateId}>
-        {/* Floating CTA Menu - Always on top */}
-        <PreviewFloatingMenu
-          previewLabel="Mode Preview"
-          ctaLabel="Miliki Website Ini"
-          onCtaClick={handleOrder}
-          variant="default"
-          isOpen={!isOrderModalOpen}
+        {/* Minimal Header - Marketplace Standard */}
+        <PreviewHeaderMinimal
+          onClose={handleClose}
+          templateName={templateName}
+          externalUrl={`https://tigaplus.id/packages?tier=starter&id=${templateId}`}
+          showBadge
         />
 
-        {/* Main Content with padding to prevent floating menu overlap */}
-        <div className={styles.mainContent}>
+        {/* Scrollable Content Area */}
+        <div className={styles.previewContent}>
+          <div className={styles.mainContent}>
           {/* Hero/Banner Section */}
           <section className={styles.heroSection}>
             <div className={styles.heroBackground}>
@@ -227,6 +232,7 @@ export function StarterPreviewRenderer({
               </div>
             </div>
           </section>
+          </div>
         </div>
       </PreviewProvider>
     </div>

@@ -18,6 +18,7 @@ export { PreviewLayout, type PreviewLayoutProps } from './PreviewLayout';
 export { PreviewModal, type PreviewModalProps } from './PreviewModal';
 export { PreviewImage, type PreviewImageProps } from './PreviewImage';
 export { PreviewFloatingMenu, type PreviewFloatingMenuProps } from './PreviewFloatingMenu';
+export { PreviewHeaderMinimal, type PreviewHeaderMinimalProps } from './PreviewHeaderMinimal';
 
 // Re-export context and hooks
 export {

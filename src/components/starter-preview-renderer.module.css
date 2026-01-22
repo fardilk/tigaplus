@@ -1,10 +1,22 @@
 /* StarterPreviewRenderer Styles */
 /* Complete style isolation using CSS Modules and preview theme variables */
 
-/* Reset and container setup */
-.previewContainer {
-  width: 100%;
-  min-height: 100vh;
+/* Full-screen overlay container - replaces embedded preview */
+.previewOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99997;
+
+  /* Flex layout: header + scrollable content */
+  display: flex;
+  flex-direction: column;
+
+  /* Background and text colors */
   background-color: var(--preview-background);
   color: var(--preview-text);
   font-family: var(--preview-body-family);
@@ -17,12 +29,29 @@
   /* Reset any parent styles */
   all: revert;
   box-sizing: border-box;
+
+  /* Prevent parent page scrolling when preview is open */
+  overflow: hidden;
 }
 
+/* Scrollable content area - takes remaining space after header */
+.previewContent {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+
+  /* Padding to account for fixed header (56px) */
+  padding-top: 56px;
+
+  /* Reset and containment */
+  all: revert;
+  box-sizing: border-box;
+  contain: layout style;
+}
+
+/* Main content wrapper (maintained for backward compatibility) */
 .mainContent {
   width: 100%;
-  /* Padding top to prevent floating menu overlap (56px for mobile, 64px for desktop) */
-  padding-top: 56px;
 }
 
 /* Hero Section */
