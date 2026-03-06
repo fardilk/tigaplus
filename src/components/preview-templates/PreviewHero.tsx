@@ -7,7 +7,7 @@ import React from 'react';
 import styles from './hero.module.css';
 
 export interface PreviewHeroProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   title?: React.ReactNode;
   subtitle?: React.ReactNode;
   backgroundImage?: string;

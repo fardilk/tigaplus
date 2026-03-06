@@ -74,7 +74,7 @@ export const PreviewImage = React.forwardRef<
               ? 3 / 2
               : aspectRatio;
 
-    const containerStyle: React.CSSProperties =
+    const containerStyle: React.CSSProperties | undefined =
       aspectRatioValue && typeof aspectRatioValue === 'number'
         ? { aspectRatio: `${aspectRatioValue}` }
         : undefined;
@@ -82,7 +82,7 @@ export const PreviewImage = React.forwardRef<
     return (
       <div
         className={[styles.imageContainer, className].filter(Boolean).join(' ')}
-        style={containerStyle}
+        style={containerStyle || undefined}
       >
         {placeholder && !isLoaded && (
           <img

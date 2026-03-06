@@ -7,7 +7,7 @@ import React from 'react';
 import styles from './input.module.css';
 
 export interface PreviewInputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   label?: string;
   error?: string;
   helperText?: string;

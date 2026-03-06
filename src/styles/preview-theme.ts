@@ -107,12 +107,12 @@ export const defaultPreviewTheme: PreviewTheme = {
  * @param templateId - Template ID to get theme for
  * @returns PreviewTheme - Theme object for the template
  */
-export function getPreviewTheme(templateId?: string): PreviewTheme {
+export function getPreviewTheme(_templateId?: string): PreviewTheme {
   // For now, all templates use default theme
   // Future: Can add template-specific theme overrides here
 
   // Example for future template-specific themes:
-  // if (templateId === 'business-01') {
+  // if (_templateId === 'business-01') {
   //   return { ...defaultPreviewTheme, colors: { ...defaultPreviewTheme.colors, primary: '#6B4CE5' } }
   // }
 

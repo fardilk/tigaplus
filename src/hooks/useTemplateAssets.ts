@@ -106,7 +106,7 @@ function loadFonts(templateId: string): Promise<void> {
  * Uses image lazy loading strategy
  */
 function preloadImages(templateId: string): Promise<void> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const config = getTemplateConfig(templateId);
     if (!config?.assets.images.length) {
       resolve();

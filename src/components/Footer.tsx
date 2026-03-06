@@ -55,7 +55,7 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          {/* <div>
             <h4 className="font-semibold mb-4">Layanan</h4>
             <ul className="space-y-2">
               <li className="text-sm text-muted-foreground">Website Portfolio</li>
@@ -64,7 +64,7 @@ export function Footer() {
               <li className="text-sm text-muted-foreground">Company Profile</li>
               <li className="text-sm text-muted-foreground">Custom Website</li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact */}
           <div>

@@ -29,14 +29,14 @@ export function TemplateCard({ template, showDetails = true }: TemplateCardProps
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 px-4">
           <Link to={`/preview/${template.id}`} className="flex-1">
-            <Button variant="secondary" size="sm" className="w-full">
+            <Button size="sm" className="w-full bg-gray-400 text-white hover:bg-green-600 transition-colors">
               <Eye className="w-4 h-4 mr-2" />
               Lihat Detail
             </Button>
           </Link>
           {template.includedTier === "starter" && (
             <Link to={`/preview/${template.id}?tier=starter&mode=preview`} className="flex-1">
-              <Button variant="secondary" size="sm" className="w-full">
+              <Button size="sm" className="w-full bg-gray-400 text-white hover:bg-green-600 transition-colors">
                 <Eye className="w-4 h-4 mr-2" />
                 Preview
               </Button>
@@ -66,7 +66,7 @@ export function TemplateCard({ template, showDetails = true }: TemplateCardProps
       {showDetails && (
         <CardFooter className="pt-2">
           <Link to={`/preview/${template.id}`} className="w-full">
-            <Button variant="ghost" className="w-full" size="sm">
+            <Button className="w-full bg-gray-400 text-white hover:bg-green-600 transition-colors" size="sm">
               <Eye className="w-4 h-4 mr-2" />
               Lihat Detail
             </Button>
